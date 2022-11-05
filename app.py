@@ -13,11 +13,11 @@ st.title("Graph Index")
 option_datasets = [
     "All datasets (default)", "Manually select multiple datasets"
 ]
-option_columns = ["All metrics (default)", "Manually select multiple columns"]
-select_all_datasets = sb.selectbox("Select dataset(s) to view.",
+option_columns = ["All graph properties (default)", "Manually select multiple columns"]
+select_all_datasets = sb.selectbox("Select datasets to view.",
                                    option_datasets,
                                    index=0)
-select_all_columns = sb.selectbox("Select metrics(s) to view.",
+select_all_columns = sb.selectbox("Select graph properties to view.",
                                   option_columns,
                                   index=0)
 is_select_all_datasets = select_all_datasets == option_datasets[0]
@@ -31,8 +31,8 @@ columns = list(df.columns) if is_select_all_columns else sb.multiselect(
     list(df.columns), list(df.columns))
 
 df_ = df[columns].loc[indices]
-st.subheader("Datasets vs. Metrics")
+st.subheader("Datasets vs. Graph Properties")
 st.dataframe(df_, height=1000)
-st.subheader("Metrics vs. Datasets")
+st.subheader("Graph Properties vs. Datasets")
 st.write("This is a transpose version of the first table.")
 st.dataframe(df_.transpose().apply(pd.to_numeric), height=1000)
