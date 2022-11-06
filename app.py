@@ -44,7 +44,7 @@ def graph_prop_page():
 
 
 def task_page():
-    st.header("Avaliable Tasks")
+    st.header("Available Tasks")
     data = pd.read_csv("task.csv", index_col=0)
     st.dataframe(data, height=1000)
 
